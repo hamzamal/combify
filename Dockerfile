@@ -3,7 +3,7 @@ FROM python:3.7
 
 WORKDIR /app
 
-RUN pip install pandas scikit-learn flask gunicorn keras
+RUN pip install pandas scikit-learn flask gunicorn keras tensorflow
 
 ADD rf_model.sav rf_model.sav
 ADD server.py server.py
