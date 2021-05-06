@@ -16,7 +16,7 @@ app = Flask(__name__)
 @app.route("/predict", methods=['POST'])
 def do_prediction():
     json = request.get_json()
-    model = joblib.load('model/rf_model.pkl')
+    model = joblib.load('rf_model.sav')
     df = pd.DataFrame(json, index=[0])
     max_features = 2000
     tokenizer = Tokenizer(num_words=max_features, split=' ')
