@@ -7,6 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1bagCfdP0TFBlL3innat9Cy3ilODfxzbA
 """
 
+import keras
 from flask import Flask, jsonify, request
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
