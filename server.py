@@ -8,6 +8,11 @@ Original file is located at
 """
 
 from flask import Flask, jsonify, request
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
+from keras.models import Sequential
+from keras.layers import Dense, Embedding, LSTM
+from keras.callbacks import EarlyStopping
 import pandas as pd
 import joblib
 
