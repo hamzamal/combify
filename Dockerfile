@@ -5,7 +5,7 @@ WORKDIR /app
 
 RUN pip install pandas scikit-learn flask gunicorn keras tensorflow
 
-ADD rf_model.sav rf_model.sav
+ADD model.json model.json
 ADD server.py server.py
 
 EXPOSE 5000
