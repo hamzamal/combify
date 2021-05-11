@@ -22,7 +22,12 @@ app = Flask(__name__)
 @app.route("/predict", methods=['POST'])
 def do_prediction():
     json = request.get_json()
-    model = joblib.load('rf_model.sav')
+    json_file = open('model.json', 'r')
+    loaded_model_json = json_file.read()
+    json_file.close()
+    model = model_from_json(loaded_model_json)
+# load weights into new model
+    model.load_weights("model.h5")
     df = pd.DataFrame(json, index=[0])
     max_features = 2000
     tokenizer = Tokenizer(num_words=max_features, split=' ')
