@@ -32,8 +32,9 @@ def do_prediction():
     df = pd.DataFrame(json, index=[0])
     max_features = 2000
     tokenizer = Tokenizer(num_words=max_features, split=' ')
-    tokenizer.fit_on_texts(df.values)
-    X = tokenizer.texts_to_sequences(df.values)
+    data=df["filteredCleanedText"].values.tolist()
+    tokenizer.fit_on_texts(data)
+    X = tokenizer.texts_to_sequences(data)
     X = pad_sequences(X)
     y_predict=model.predict(X)
     result = {"Predicted House Price" : y_predict[0]}
