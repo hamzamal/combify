@@ -16,9 +16,6 @@ from keras.layers import Dense, Embedding, LSTM
 from keras.callbacks import EarlyStopping
 import pandas as pd
 import joblib
-import pickle
-import dill
-import weakref
 from keras.models import model_from_json
 
 app = Flask(__name__)
