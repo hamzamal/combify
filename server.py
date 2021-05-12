@@ -17,8 +17,22 @@ from keras.callbacks import EarlyStopping
 import pandas as pd
 import joblib
 from keras.models import model_from_json
+import json
+from json import JSONEncoder
+import numpy as np
 
 app = Flask(__name__)
+
+class NumpyArrayEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        elif isinstance(obj, np.floating):
+            return float(obj)
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        else:
+            return super(NumpyArrayEncoder, self).default(obj)
 
 @app.route("/predict", methods=['POST'])
 def do_prediction():
@@ -38,7 +52,8 @@ def do_prediction():
     X = pad_sequences(X)
     y_predict=model.predict(X)
     result = {"Predicted House Price" : y_predict[0]}
-    return print(result)
+    encodedNumpyData = json.dumps(result, cls=NumpyArrayEncoder)
+    return encodedNumpyData
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
