@@ -38,7 +38,7 @@ def do_prediction():
     X = pad_sequences(X)
     y_predict=model.predict(X)
     result = {"Predicted House Price" : y_predict[0]}
-    return jsonify(result)
+    return print(result)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
