@@ -55,7 +55,7 @@ def do_prediction():
         y_predict[0]=0
     else:
         y_predict[0]=1
-    result = {"Predicted House Price" : y_predict[0]}
+    result = {"Prediction" : y_predict[0]}
     encodedNumpyData = json.dumps(result, cls=NumpyArrayEncoder)
     return encodedNumpyData
 
